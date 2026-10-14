@@ -10,33 +10,44 @@
 
 import { Route as rootRouteImport } from './routes/__root'
 import { Route as IndexRouteImport } from './routes/index'
+import { Route as FrPagesGestionImmobiliereAgadirRouteImport } from './routes/fr.pages.gestion-immobiliere-agadir'
 
 const IndexRoute = IndexRouteImport.update({
   id: '/',
   path: '/',
   getParentRoute: () => rootRouteImport,
 } as any)
+const FrPagesGestionImmobiliereAgadirRoute =
+  FrPagesGestionImmobiliereAgadirRouteImport.update({
+    id: '/fr/pages/gestion-immobiliere-agadir',
+    path: '/fr/pages/gestion-immobiliere-agadir',
+    getParentRoute: () => rootRouteImport,
+  } as any)
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
+  '/fr/pages/gestion-immobiliere-agadir': typeof FrPagesGestionImmobiliereAgadirRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
+  '/fr/pages/gestion-immobiliere-agadir': typeof FrPagesGestionImmobiliereAgadirRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
+  '/fr/pages/gestion-immobiliere-agadir': typeof FrPagesGestionImmobiliereAgadirRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
-  fullPaths: '/'
+  fullPaths: '/' | '/fr/pages/gestion-immobiliere-agadir'
   fileRoutesByTo: FileRoutesByTo
-  to: '/'
-  id: '__root__' | '/'
+  to: '/' | '/fr/pages/gestion-immobiliere-agadir'
+  id: '__root__' | '/' | '/fr/pages/gestion-immobiliere-agadir'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
+  FrPagesGestionImmobiliereAgadirRoute: typeof FrPagesGestionImmobiliereAgadirRoute
 }
 
 declare module '@tanstack/react-router' {
@@ -48,11 +59,19 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof IndexRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/fr/pages/gestion-immobiliere-agadir': {
+      id: '/fr/pages/gestion-immobiliere-agadir'
+      path: '/fr/pages/gestion-immobiliere-agadir'
+      fullPath: '/fr/pages/gestion-immobiliere-agadir'
+      preLoaderRoute: typeof FrPagesGestionImmobiliereAgadirRouteImport
+      parentRoute: typeof rootRouteImport
+    }
   }
 }
 
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
+  FrPagesGestionImmobiliereAgadirRoute: FrPagesGestionImmobiliereAgadirRoute,
 }
 export const routeTree = rootRouteImport
   ._addFileChildren(rootRouteChildren)
