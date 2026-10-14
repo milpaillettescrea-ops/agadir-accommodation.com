@@ -7,6 +7,13 @@
 import { defineConfig } from "@lovable.dev/vite-tanstack-config";
 
 export default defineConfig({
+  vite: {
+    optimizeDeps: {
+      // Keep Radix's hook-bearing modules on Vite's normal import path. This
+      // avoids a second React module identity after dependency-cache refreshes.
+      exclude: ["@radix-ui/react-slot", "@radix-ui/react-compose-refs"],
+    },
+  },
   tanstackStart: {
     // Redirect TanStack Start's bundled server entry to src/server.ts (our SSR error wrapper).
     // nitro/vite builds from this
