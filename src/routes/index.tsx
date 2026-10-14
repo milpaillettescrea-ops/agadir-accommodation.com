@@ -13,7 +13,7 @@ import iken from '@/assets/iken.asset.json';
 import hivernage from '@/assets/hivernage.asset.json';
 import islane from '@/assets/islane.asset.json';
 import film from '@/assets/film.asset.json';
-import video from '@/assets/video.asset.json';
+import video from '@/assets/video-webm.asset.json';
 import article1 from '@/assets/article1.asset.json';
 import article2 from '@/assets/article2.asset.json';
 import article3 from '@/assets/article3.asset.json';
